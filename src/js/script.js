@@ -267,11 +267,13 @@ document.addEventListener("DOMContentLoaded", function () {
         gameOverMessage.style.display = "none";
         
         const cells = document.querySelectorAll(".cell");
+        const isDark = document.body.classList.contains('darkmode');
         cells.forEach(cell => {
             cell.textContent = "";
-            cell.style.backgroundColor = "#f9f9f9"; 
-            cell.style.transform = "scale(1)"; 
-            cell.style.transition = ""; 
+            cell.style.backgroundColor = isDark ? "#2c2f34" : "#f9f9f9"; // Sesuaikan dengan mode
+            cell.style.color = isDark ? "#f0f4f8" : "#333"; // Sesuaikan warna teks juga
+            cell.style.transform = "scale(1)";
+            cell.style.transition = "";
         });
     };
 
