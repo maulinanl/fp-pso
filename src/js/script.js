@@ -118,6 +118,12 @@ document.addEventListener("DOMContentLoaded", function () {
     const vsComputerRadio = document.getElementById('vsComputer');
     const vsPlayerRadio = document.getElementById('vsPlayer');
 
+    // --- BAGIAN BARU: INISIALISASI AUDIO ---
+    const moveSound = new Audio('./src/sounds/move.mp3');
+    const winSound = new Audio('./src/sounds/win.mp3');
+    const loseSound = new Audio('./src/sounds/lose.mp3');
+    // --- SAMPAI SINI ---
+
     // Fungsi untuk mengupdate tampilan skor di HTML
     function updateScoreDisplay() {
         scoreXElement.textContent = scoreX;
@@ -169,6 +175,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
         event.target.textContent = currentPlayer; // Tempatkan simbol pemain saat ini
 
+        // --- BAGIAN BARU: MAINKAN SUARA GERAK ---
+        moveSound.currentTime = 0; // Reset waktu audio ke awal
+        moveSound.play();
+        // --- SAMPAI SINI ---
+
         // Panggil checkWinner dari fungsi yang sudah diekspor
         if (checkWinner()) { // checkWinner() sekarang mengembalikan boolean murni
             gameOverMessage.textContent = `${currentPlayer} wins!`;
@@ -199,6 +210,12 @@ document.addEventListener("DOMContentLoaded", function () {
             }
             updateScoreDisplay(); // Perbarui tampilan skor setelah kemenangan
             restartButton.style.display = "block"; // Tampilkan tombol restart
+
+            // --- BAGIAN BARU: MAINKAN SUARA MENANG ---
+            winSound.currentTime = 0; // Reset waktu audio ke awal
+            winSound.play();
+            // --- SAMPAI SINI ---
+
             return; // Penting: keluar setelah pemenang ditemukan
         }
 
@@ -228,6 +245,11 @@ document.addEventListener("DOMContentLoaded", function () {
         if (chosenCell) { // Pastikan ada sel yang ditemukan (bisa null jika papan penuh)
             chosenCell.textContent = "O"; // Komputer bermain sebagai O
 
+            // --- BAGIAN BARU: MAINKAN SUARA GERAK KOMPUTER ---
+            moveSound.currentTime = 0; // Reset waktu audio ke awal
+            moveSound.play();
+            // --- SAMPAI SINI ---
+
             // Setelah komputer bergerak, cek pemenang atau seri lagi
             if (checkWinner()) {
                 gameOverMessage.textContent = "O wins!";
@@ -252,6 +274,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 scoreO++; // Karena komputer adalah O
                 updateScoreDisplay();
                 restartButton.style.display = "block";
+
+                // --- BAGIAN BARU: MAINKAN SUARA KALAH ---
+                loseSound.currentTime = 0; // Reset waktu audio ke awal
+                loseSound.play();
+                // --- SAMPAI SINI ---
             } else {
                 currentPlayer = "X"; // Kembali ke giliran pemain (X)
             }
