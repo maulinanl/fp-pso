@@ -42,24 +42,25 @@
     
     <script type="module" src="./src/js/script.js"></script>
     <script>
-        const themeToggle = document.getElementById('theme-toggle');
-        const logo = document.getElementById('game-logo');
-        const lightLogo = './src/images/logo.png';
-        const darkLogo = './src/images/logo-dark.png';
+    const themeToggle = document.getElementById('theme-toggle');
+    const logo = document.getElementById('game-logo');
+    const lightLogo = './src/images/logo.png';
+    const darkLogo = './src/images/logo-dark.png';
+    const body = document.body;
 
-        function updateLogo() {
-            if (themeToggle.checked) {
-                logo.src = darkLogo;
-            } else {
-                logo.src = lightLogo;
-            }
+    function updateTheme() {
+        if (themeToggle.checked) {
+            logo.src = darkLogo;
+            body.classList.add('dark-mode');
+        } else {
+            logo.src = lightLogo;
+            body.classList.remove('dark-mode');
         }
+    }
 
-        themeToggle.addEventListener('change', updateLogo);
-
-        // If you set dark mode by default or from localStorage, call updateLogo() on load
-        window.addEventListener('DOMContentLoaded', updateLogo);
-    </script>
+    themeToggle.addEventListener('change', updateTheme);
+    window.addEventListener('DOMContentLoaded', updateTheme);
+</script>
 </body>
 
 </html>

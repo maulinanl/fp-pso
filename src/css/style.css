@@ -5,10 +5,14 @@ body {
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    background-color: #f0f4f8;
     font-family: 'Jersey 15', sans-serif;
     flex-direction: column;
     box-sizing: border-box;
+    --bg-image: url('../images/background-light.png');
+    background-image: var(--bg-image);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .board {
@@ -245,45 +249,46 @@ input:checked + .slider:before {
 }
 
 /* Dark mode styles */
-body.darkmode {
+body.dark-mode {
+    --bg-image: url('../images/background-dark.png');
     background-color: #181a1b;
     color: #f0f4f8;
 }
-body.darkmode #score-board {
+body.dark-mode #score-board {
     background-color: #23272a;
     color: #f0f4f8;
 }
-body.darkmode .board {
+body.dark-mode .board {
     background-color: #23272a;
     box-shadow: 0 4px 12px rgba(0,0,0,0.5);
 }
-body.darkmode .cell {
+body.dark-mode .cell {
     background-color: #2c2f34;
     color: #f0f4f8;
     border: 1px solid #444;
 }
-body.darkmode .cell:hover {
+body.dark-mode .cell:hover {
     background-color: #3a3f44;
 }
-body.darkmode #game-board {
+body.dark-mode #game-board {
     background-color: #23272a;
 }
-body.darkmode #game-over-message {
+body.dark-mode #game-over-message {
     color: #f0f4f8;
 }
-body.darkmode #mode-selection {
+body.dark-mode #mode-selection {
     background-color: #23272a;
     color: #f0f4f8;
 }
-body.darkmode #restart-button {
+body.dark-mode #restart-button {
     background-color: #388e3c;
 }
-body.darkmode #restart-button:hover {
+body.dark-mode #restart-button:hover {
     background-color: #2e7031;
 }
-body.darkmode #reset-score-button {
+body.dark-mode #reset-score-button {
     background-color: #b71c1c;
 }
-body.darkmode #reset-score-button:hover {
+body.dark-mode #reset-score-button:hover {
     background-color: #7f0000;
 }
