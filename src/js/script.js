@@ -104,25 +104,21 @@ document.addEventListener("DOMContentLoaded", function () {
     const restartButton = document.getElementById("restart-button");
     const resetScoreButton = document.getElementById("reset-score-button");
 
-    // Variabel state game yang di-export di atas, digunakan di sini.
-    // JANGAN deklarasikan ulang dengan 'let' di sini.
-    // Contoh:
-    // let currentPlayer = "X"; // Baris ini harus DIHAPUS
-    // let gameOver = false;    // Baris ini harus DIHAPUS
-    // let scoreX = 0;          // Baris ini harus DIHAPUS
-    // let scoreO = 0;          // Baris ini harus DIHAPUS
-    // let gameMode = 'playerVsComputer'; // Baris ini harus DIHAPUS
-
     const scoreXElement = document.getElementById("scoreX");
     const scoreOElement = document.getElementById("scoreO");
     const vsComputerRadio = document.getElementById('vsComputer');
     const vsPlayerRadio = document.getElementById('vsPlayer');
+    const darkModeToggle = document.getElementById('darkModeToggle'); // Ambil elemen toggle
 
-    // --- BAGIAN BARU: INISIALISASI AUDIO ---
-    const moveSound = new Audio('./src/sounds/move.mp3');
-    const winSound = new Audio('./src/sounds/win.mp3');
-    const loseSound = new Audio('./src/sounds/lose.mp3');
-    // --- SAMPAI SINI ---
+    darkModeToggle.addEventListener('change', function () {
+        if (this.checked) {
+            document.body.classList.add('dark-mode');
+            localStorage.setItem('theme', 'dark');
+        } else {
+            document.body.classList.remove('dark-mode');
+            localStorage.setItem('theme', 'light');
+        }
+    });
 
     // Fungsi untuk mengupdate tampilan skor di HTML
     function updateScoreDisplay() {
@@ -175,11 +171,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
         event.target.textContent = currentPlayer; // Tempatkan simbol pemain saat ini
 
-        // --- BAGIAN BARU: MAINKAN SUARA GERAK ---
-        moveSound.currentTime = 0; // Reset waktu audio ke awal
-        moveSound.play();
-        // --- SAMPAI SINI ---
-
         // Panggil checkWinner dari fungsi yang sudah diekspor
         if (checkWinner()) { // checkWinner() sekarang mengembalikan boolean murni
             gameOverMessage.textContent = `${currentPlayer} wins!`;
@@ -210,12 +201,6 @@ document.addEventListener("DOMContentLoaded", function () {
             }
             updateScoreDisplay(); // Perbarui tampilan skor setelah kemenangan
             restartButton.style.display = "block"; // Tampilkan tombol restart
-
-            // --- BAGIAN BARU: MAINKAN SUARA MENANG ---
-            winSound.currentTime = 0; // Reset waktu audio ke awal
-            winSound.play();
-            // --- SAMPAI SINI ---
-
             return; // Penting: keluar setelah pemenang ditemukan
         }
 
@@ -245,11 +230,6 @@ document.addEventListener("DOMContentLoaded", function () {
         if (chosenCell) { // Pastikan ada sel yang ditemukan (bisa null jika papan penuh)
             chosenCell.textContent = "O"; // Komputer bermain sebagai O
 
-            // --- BAGIAN BARU: MAINKAN SUARA GERAK KOMPUTER ---
-            moveSound.currentTime = 0; // Reset waktu audio ke awal
-            moveSound.play();
-            // --- SAMPAI SINI ---
-
             // Setelah komputer bergerak, cek pemenang atau seri lagi
             if (checkWinner()) {
                 gameOverMessage.textContent = "O wins!";
@@ -274,11 +254,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 scoreO++; // Karena komputer adalah O
                 updateScoreDisplay();
                 restartButton.style.display = "block";
-
-                // --- BAGIAN BARU: MAINKAN SUARA KALAH ---
-                loseSound.currentTime = 0; // Reset waktu audio ke awal
-                loseSound.play();
-                // --- SAMPAI SINI ---
             } else {
                 currentPlayer = "X"; // Kembali ke giliran pemain (X)
             }
@@ -303,7 +278,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const cells = document.querySelectorAll(".cell");
         cells.forEach(cell => {
             cell.textContent = "";
-            cell.style.backgroundColor = "#f9f9f9"; // Warna default
+            cell.style.backgroundColor = ""; // Kosongkan untuk kembali ke default CSS atau tema
             cell.style.transform = "scale(1)"; // Reset animasi kemenangan
             cell.style.transition = ""; // Hapus transisi animasi
         });
@@ -333,6 +308,24 @@ document.addEventListener("DOMContentLoaded", function () {
     if (resetScoreButton) {
         resetScoreButton.addEventListener('click', resetScores);
     }
+
+    // --- LOGIKA TOGGLE DARK/LIGHT MODE ---
+    // Simpan preferensi mode di localStorage
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+        document.body.classList.add('dark-mode');
+        darkModeToggle.checked = true;
+    }
+
+    darkModeToggle.addEventListener('change', function () {
+        if (this.checked) {
+            document.body.classList.add('dark-mode');
+            localStorage.setItem('theme', 'dark');
+        } else {
+            document.body.classList.remove('dark-mode');
+            localStorage.setItem('theme', 'light');
+        }
+    });
 
     // Inisialisasi papan saat DOM siap
     initializeBoard();

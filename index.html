@@ -7,10 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="./icon.png">
     <link rel="stylesheet" href="./src/css/style.css">
-    <title>X O Game</title>
+    <link rel="stylesheet" href="./src/css/theme.css"> <title>X O Game</title>
 </head>
 
 <body>
+    <div id="theme-toggle"> <label class="switch">
+            <input type="checkbox" id="darkModeToggle">
+            <span class="slider round"></span>
+        </label>
+    </div>
+
     <div id="score-board">
         Pemain X: <span id="scoreX">0</span> | Pemain O: <span id="scoreO">0</span>
     </div>
@@ -31,7 +37,7 @@
         <button id="reset-score-button" onclick="resetScores()">Reset Skor</button>
     </div>
     
-    <script type="module" src="./src/js/script.js"></script>
+    <script src="./src/js/script.js"></script>
 </body>
 
 </html>
