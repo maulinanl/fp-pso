@@ -122,6 +122,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const moveSound = new Audio('./src/sounds/move.mp3');
     const winSound = new Audio('./src/sounds/win.mp3');
     const loseSound = new Audio('./src/sounds/lose.mp3');
+    const drawSound = new Audio('./src/sounds/draw.mp3');
     // --- SAMPAI SINI ---
 
     // Fungsi untuk mengupdate tampilan skor di HTML
@@ -225,6 +226,10 @@ document.addEventListener("DOMContentLoaded", function () {
             gameOverMessage.style.display = "block";
             gameOver = true; // Update global gameOver
             restartButton.style.display = "block";
+            // --- Play draw sound here ---
+            drawSound.currentTime = 0;
+            drawSound.play();
+            // --- End draw sound ---
             return; // Penting: keluar setelah seri
         }
 
@@ -288,6 +293,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 gameOverMessage.style.display = "block";
                 gameOver = true;
                 restartButton.style.display = "block";
+                // --- Play draw sound here ---
+                drawSound.currentTime = 0; // Reset waktu audio ke awal
+                drawSound.play();
+                // --- End draw sound ---
             }
         }
     }
