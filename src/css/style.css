@@ -18,8 +18,10 @@ body {
 .button-group {
     display: flex;
     gap: 15px;
-    margin-top: 20px;
-    margin-bottom: 30px; /* Tambah margin bawah */
+    margin-top: -20px;
+    margin-bottom: 30px;
+    justify-content: center;
+    align-items: center;
 }
 
 .board {
@@ -77,12 +79,6 @@ body {
     margin-top: 15px;
     text-align: center;
     display: none;
-}
-
-.button-group {
-    display: flex;
-    gap: 15px;
-    margin-top: 20px;
 }
 
 #restart-button,
@@ -290,7 +286,7 @@ body.dark-mode #mode-selection {
     background-color: #23272a;
     color: #f0f4f8;
 }
-body.dark-mode #restart-button {
+/* body.dark-mode #restart-button {
     background-color: #388e3c;
 }
 body.dark-mode #restart-button:hover {
@@ -301,4 +297,4 @@ body.dark-mode #reset-score-button {
 }
 body.dark-mode #reset-score-button:hover {
     background-color: #7f0000;
-}
+} */
