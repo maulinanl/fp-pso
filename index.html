@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <img src="./src/images/logo.png" alt="Game Logo" style="display:block; margin: 30px auto 10px auto; width: 360px; max-width:90vw;">
+    <img id="game-logo" src="./src/images/logo.png" alt="Game Logo" style="display:block; margin: 30px auto 10px auto; width: 360px; max-width:90vw;">
   
     <div class="top-bar">
         <label class="switch">
@@ -41,6 +41,25 @@
     </div>
     
     <script type="module" src="./src/js/script.js"></script>
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const logo = document.getElementById('game-logo');
+        const lightLogo = './src/images/logo.png';
+        const darkLogo = './src/images/logo-dark.png';
+
+        function updateLogo() {
+            if (themeToggle.checked) {
+                logo.src = darkLogo;
+            } else {
+                logo.src = lightLogo;
+            }
+        }
+
+        themeToggle.addEventListener('change', updateLogo);
+
+        // If you set dark mode by default or from localStorage, call updateLogo() on load
+        window.addEventListener('DOMContentLoaded', updateLogo);
+    </script>
 </body>
 
 </html>
