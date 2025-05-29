@@ -25,13 +25,18 @@
     </div>
 
     <div id="mode-selection">
-        Choose Game Mode:
-        <input type="radio" id="vsComputer" name="gameMode" value="playerVsComputer" checked>
-        <label for="vsComputer">Play vs Computer</label>
-        <input type="radio" id="vsPlayer" name="gameMode" value="playerVsPlayer">
-        <label for="vsPlayer">Play vs Friend</label>
+        <div class="segmented-toggle" id="game-mode-toggle">
+            <input type="radio" id="vsComputer" name="gameMode" value="playerVsComputer" checked>
+            <label for="vsComputer" class="segmented-option">
+                🎮&nbsp;Play vs Computer
+            </label>
+            <input type="radio" id="vsPlayer" name="gameMode" value="playerVsPlayer">
+            <label for="vsPlayer" class="segmented-option">
+                🧑‍🤝‍🧑&nbsp;Play vs Friend
+            </label>
+            <span class="segmented-slider"></span>
+        </div>
     </div>
-
 
     <div id="game-board" class="board"></div>
     <div id="game-over-message"></div>
@@ -61,6 +66,131 @@
     themeToggle.addEventListener('change', updateTheme);
     window.addEventListener('DOMContentLoaded', updateTheme);
 </script>
+
+<style>
+#mode-selection {
+    margin-bottom: 15px;
+    text-align: center;
+    font-size: 18px;
+    color: #555;
+    background-color: #f0f8ff;
+    padding: 0;
+    border-radius: 9999px;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.08);
+    display: flex;
+    justify-content: center;
+}
+
+.segmented-toggle {
+    display: flex;
+    position: relative;
+    background: #e6eef7;
+    border-radius: 9999px;
+    overflow: hidden;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.04);
+    width: 360px;
+    max-width: 100vw;
+    height: 52px;
+    margin: 12px auto;
+    align-items: center;
+    justify-content: center;
+}
+
+.segmented-toggle input[type="radio"] {
+    display: none;
+}
+
+.segmented-option {
+    flex: 1 1 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 17px;
+    color: #007bff;
+    background: transparent;
+    position: relative;
+    z-index: 2;
+    transition: color 0.3s;
+    height: 52px;
+    user-select: none;
+    border-radius: 9999px;
+    width: 50%;
+    padding: 0 0;
+    margin: 0;
+    text-align: center;
+}
+
+#vsComputer:checked + label,
+#vsPlayer:checked + label {
+    color: #fff;
+}
+
+.segmented-slider {
+    position: absolute;
+    top: 4px;
+    bottom: 4px;
+    left: 4px;
+    width: calc(50% - 8px);
+    background: #007bff;
+    border-radius: 9999px;
+    transition: transform 0.3s cubic-bezier(.4,1.4,.6,1), background 0.3s;
+    z-index: 1;
+    pointer-events: none;
+}
+
+#vsPlayer:checked ~ .segmented-slider {
+    transform: translateX(100%);
+}
+
+#vsComputer:checked ~ .segmented-slider {
+    transform: translateX(0%);
+}
+
+body.dark-mode #mode-selection,
+body.darkmode #mode-selection {
+    background: #23272a;
+    color: #f0f4f8;
+}
+body.dark-mode .segmented-toggle,
+body.darkmode .segmented-toggle {
+    background: #23272a;
+}
+body.dark-mode .segmented-slider,
+body.darkmode .segmented-slider {
+    background: #2196F3;
+}
+body.dark-mode .segmented-option,
+body.darkmode .segmented-option {
+    color: #90caf9;
+}
+body.dark-mode #vsComputer:checked + label,
+body.dark-mode #vsPlayer:checked + label,
+body.darkmode #vsComputer:checked + label,
+body.darkmode #vsPlayer:checked + label {
+    color: #fff;
+}
+
+@media screen and (max-width: 480px) {
+    .segmented-toggle {
+        width: 98vw;
+        min-width: 0;
+        height: 42px;
+    }
+    .segmented-option {
+        font-size: 14px;
+        height: 42px;
+        padding: 0 0;
+    }
+    .segmented-slider {
+        top: 2px;
+        bottom: 2px;
+        left: 2px;
+        width: calc(50% - 4px);
+    }
+}
+</style>
 </body>
 
 </html>
