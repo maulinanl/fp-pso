@@ -104,6 +104,23 @@ document.addEventListener("DOMContentLoaded", function () {
     const restartButton = document.getElementById("restart-button");
     const resetScoreButton = document.getElementById("reset-score-button");
 
+    const themeToggle = document.getElementById('theme-toggle');
+
+    // Cek preferensi sebelumnya
+    if (localStorage.getItem('theme') === 'dark') {
+        document.body.classList.add('darkmode');
+        themeToggle.checked = true;
+    }
+    themeToggle.addEventListener('change', function () {
+        if (this.checked) {
+            document.body.classList.add('darkmode');
+            localStorage.setItem('theme', 'dark');
+        } else {
+            document.body.classList.remove('darkmode');
+            localStorage.setItem('theme', 'light');
+        }
+    });
+
     // Variabel state game yang di-export di atas, digunakan di sini.
     // JANGAN deklarasikan ulang dengan 'let' di sini.
     // Contoh:
@@ -144,7 +161,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         winningCells.forEach(cell => {
             cell.style.transition = "transform 0.5s ease-in-out";
-            cell.style.transform = "scale(1.2)";
+            cell.style.transform = "scale(1)";
         });
     }
 
