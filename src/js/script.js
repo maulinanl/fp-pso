@@ -327,11 +327,13 @@ document.addEventListener("DOMContentLoaded", function () {
         
         // Reset warna sel dan teks
         const cells = document.querySelectorAll(".cell");
+        const isDark = document.body.classList.contains('darkmode');
         cells.forEach(cell => {
             cell.textContent = "";
-            cell.style.backgroundColor = "#f9f9f9"; // Warna default
-            cell.style.transform = "scale(1)"; // Reset animasi kemenangan
-            cell.style.transition = ""; // Hapus transisi animasi
+            cell.style.backgroundColor = isDark ? "#2c2f34" : "#f9f9f9"; // Sesuaikan dengan mode
+            cell.style.color = isDark ? "#f0f4f8" : "#333"; // Sesuaikan warna teks juga
+            cell.style.transform = "scale(1)";
+            cell.style.transition = "";
         });
     };
 

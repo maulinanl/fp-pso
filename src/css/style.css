@@ -1,6 +1,6 @@
 body {
     margin: 0;
-    padding: 0;
+    padding: 0 0 40px 0;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -9,6 +9,13 @@ body {
     font-family: 'Jersey 15', sans-serif;
     flex-direction: column;
     box-sizing: border-box;
+}
+
+.button-group {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+    margin-bottom: 30px; /* Tambah margin bawah */
 }
 
 .board {
