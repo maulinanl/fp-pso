@@ -291,13 +291,13 @@ document.addEventListener("DOMContentLoaded", function () {
         const cells = document.querySelectorAll(".cell");
         const isDark = document.body.classList.contains('darkmode');
         cells.forEach(cell => {
-            cell.textContent = "";
-            cell.style.backgroundColor = isDark ? "#2c2f34" : "#f9f9f9"; // Sesuaikan dengan mode
-            cell.style.color = isDark ? "#f0f4f8" : "#333"; // Sesuaikan warna teks juga
-            cell.style.transform = "scale(1)";
-            cell.style.transition = "";
-        });
-        updateScoreDisplay();
+        cell.textContent = "";
+        cell.style.backgroundColor = ""; // Hapus style inline
+        cell.style.color = "";           // Hapus style inline
+        cell.style.transform = "scale(1)";
+        cell.style.transition = "";
+    });
+    ScoreDisplay();
     };
 
     window.resetScores = function () {
