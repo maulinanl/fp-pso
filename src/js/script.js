@@ -104,10 +104,28 @@ document.addEventListener("DOMContentLoaded", function () {
     const loseSound = new Audio('./src/sounds/lose.mp3');
     const drawSound = new Audio('./src/sounds/draw.mp3');
 
-    function updateScoreDisplay() {
+    function updateScoreDisplay(prevX = scoreX, prevO = scoreO) {
         scoreXElement.textContent = scoreX;
         scoreOElement.textContent = scoreO;
+
+        if (scoreX > prevX) {
+            scoreXElement.classList.remove('score-animate');
+            void scoreXElement.offsetWidth; // Force reflow for restart animation
+            scoreXElement.classList.add('score-animate');
+        }
+        if (scoreO > prevO) {
+            scoreOElement.classList.remove('score-animate');
+            void scoreOElement.offsetWidth;
+            scoreOElement.classList.add('score-animate');
+        }
     }
+
+    scoreXElement.addEventListener('animationend', () => {
+        scoreXElement.classList.remove('score-animate');
+    });
+    scoreOElement.addEventListener('animationend', () => {
+        scoreOElement.classList.remove('score-animate');
+    });
 
     function highlightWinner(cellA, cellB, cellC) {
         cellA.style.backgroundColor = "#8bc34a";
@@ -175,11 +193,14 @@ document.addEventListener("DOMContentLoaded", function () {
             animateWinner(); 
 
             if (currentPlayer === 'X') {
+                const prev = scoreX;
                 scoreX++;
+                updateScoreDisplay(prev, scoreO);
             } else {
+                const prev = scoreO;
                 scoreO++;
+                updateScoreDisplay(scoreX, prev);
             }
-            updateScoreDisplay(); 
             restartButton.style.display = "block"; 
 
             winSound.currentTime = 0; 
@@ -238,8 +259,9 @@ document.addEventListener("DOMContentLoaded", function () {
                     }
                 }
                 animateWinner();
-                scoreO++; 
-                updateScoreDisplay();
+                const prev = scoreO;
+                scoreO++;
+                updateScoreDisplay(scoreX, prev);
                 restartButton.style.display = "block";
 
                 loseSound.currentTime = 0; 
@@ -275,6 +297,7 @@ document.addEventListener("DOMContentLoaded", function () {
             cell.style.transform = "scale(1)";
             cell.style.transition = "";
         });
+        updateScoreDisplay();
     };
 
     window.resetScores = function () {
