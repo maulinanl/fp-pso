@@ -144,7 +144,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         winningCells.forEach(cell => {
             cell.style.transition = "transform 0.5s ease-in-out";
-            cell.style.transform = "scale(1.2)";
+            cell.style.transform = "scale(1)";
         });
     }
 
