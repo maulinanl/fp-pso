@@ -1,4 +1,3 @@
-/*light mode styles */
 body {
     margin: 0;
     padding: 0 0 40px 0;
@@ -35,7 +34,6 @@ body {
     width: 100%;
     aspect-ratio: 1 / 1;
     background-color: #fff;
-    /* Remove or reduce padding to avoid overflow */
     padding: 0;
     border-radius: 15px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -56,7 +54,7 @@ body {
     border-radius: 8px;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.3s ease, box-shadow 0.3s ease;
-    box-sizing: border-box; /* Add this line */
+    box-sizing: border-box;
 }
 
 .cell:hover {
@@ -86,8 +84,8 @@ body {
 #reset-score-button {
     width: 144px;
     height: 144px;
-    padding-top: 24px;    /* Add vertical padding */
-    padding-bottom: 24px; /* Add vertical padding */
+    padding-top: 24px;  
+    padding-bottom: 24px; 
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -98,7 +96,6 @@ body {
     background-color: transparent;
     color: transparent;
     font-size: 0;
-    /* Remove box-shadow here */
 }
 
 #restart-button {
@@ -108,7 +105,6 @@ body {
 #restart-button:hover,
 #reset-score-button:hover {
     transform: scale(1.05);
-    /* Remove box-shadow for no glow */
 }
 
 #reset-score-button {
@@ -141,8 +137,8 @@ body {
     font-size: 18px;
     color: #555;
     background-color: #f0f8ff;
-    padding: 0;                /* Tidak perlu padding kiri-kanan */
-    border-radius: 40px;       /* Lebih proporsional */
+    padding: 0;              
+    border-radius: 40px;     
     box-shadow: 0 1px 5px rgba(0, 0, 0, 0.08);
     display: flex;
     justify-content: center;
@@ -176,9 +172,9 @@ body {
 
 .segmented-slider {
     position: absolute;
-    top: 6px;          /* Sedikit lebih tebal */
+    top: 6px;       
     bottom: 6px;
-    left: 6px;        /* Sedikit lebih tebal */    
+    left: 6px;        
     width: calc(50% - 12px);
     background: #007bff;
     border-radius: 9999px;
@@ -188,8 +184,8 @@ body {
 }
 
 .segmented-option {
-    flex: 1 1 0;
-    display: flex;
+    flex: 0 1 auto;
+    display: inline;
     align-items: center;
     justify-content: center;
     cursor: pointer;
@@ -204,9 +200,10 @@ body {
     user-select: none;
     border-radius: 9999px;
     width: 50%;
-    padding: 0 0;
-    margin: 0;
     text-align: center;
+    white-space: nowrap;   
+    box-sizing: border-box;
+    padding: 13px 25px;      
 }
 
 .segmented-toggle {
@@ -216,14 +213,14 @@ body {
     border-radius: 9999px;
     overflow: hidden;
     box-shadow: 0 1px 5px rgba(0,0,0,0.04);
-    width: 375px;      /* Ubah dari 360px ke 440px */
-    max-width: 98vw;   /* Supaya tetap responsif */
-    height: 56px;      /* Sedikit lebih tinggi */
-    margin: 0px auto; /* Lebih lega */
+    width: 450px;         
+    max-width: 100%;
+    height: 55px;
+    margin: 0px auto;
     align-items: center;
     justify-content: center;
-    padding-left: 15px;       /* tambahkan padding kiri */
-    padding-right: 15px; 
+    padding-left: 0;      
+    padding-right: 0;
 }
 
 .segmented-toggle input[type="radio"] {
@@ -315,7 +312,7 @@ body {
     height: 0;
 }
 .slider {
-    position: absolute;
+    position: relative;
     cursor: pointer;
     top: 0; left: 0; right: 0; bottom: 0;
     background-color: #ccc;
@@ -339,12 +336,13 @@ input:checked + .slider:before {
 }
 #vsPlayer:checked ~ .segmented-slider {
     transform: translateX(100%);
+    width: calc(50% - 6px);
 }
 
 #vsComputer:checked ~ .segmented-slider {
     transform: translateX(0%);
+    width: calc(50% - 6px);
 }
-/* Dark mode styles */
 body.dark-mode {
     --bg-image: url('../images/background-dark.png');
     background-color: #181a1b;
@@ -372,41 +370,23 @@ body.dark-mode #game-board {
 body.dark-mode #game-over-message {
     color: #f0f4f8;
 }
-body.dark-mode #mode-selection,
-body.darkmode #mode-selection {
+body.dark-mode #mode-selection {
     background: #23272a;
     color: #f0f4f8;
 }
-body.dark-mode .segmented-toggle,
-body.darkmode .segmented-toggle {
+body.dark-mode .segmented-toggle {
     background: #23272a;
 }
-body.dark-mode .segmented-slider,
-body.darkmode .segmented-slider {
+body.dark-mode .segmented-slider {
     background: #2196F3;
 }
-body.dark-mode .segmented-option,
-body.darkmode .segmented-option {
+body.dark-mode .segmented-option {
     color: #90caf9;
 }
 body.dark-mode #vsComputer:checked + label,
-body.dark-mode #vsPlayer:checked + label,
-body.darkmode #vsComputer:checked + label,
-body.darkmode #vsPlayer:checked + label {
+body.dark-mode #vsPlayer:checked + label {
     color: #fff;
-}
-/* body.dark-mode #restart-button {
-    background-color: #388e3c;
-}
-body.dark-mode #restart-button:hover {
-    background-color: #2e7031;
-}
-body.dark-mode #reset-score-button {
-    background-color: #b71c1c;
-}
-body.dark-mode #reset-score-button:hover {
-    background-color: #7f0000;
-} */
+}                            
 
 @keyframes score-bounce {
     0% { transform: scale(1); }
