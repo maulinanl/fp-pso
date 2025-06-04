@@ -4,13 +4,19 @@ on:
   push:
     branches:
       - main
-      - develop
-      - feature/**
-      - bugfix/**
+      - Feat--**
+      - fitur-**
+      - Security         
+      - logo             
+      - sounds           
   pull_request:
     branches:
-      - main
-      - develop
+      - main       
+      - Feat--**
+      - fitur-**
+      - Security
+      - logo
+      - sounds
 
 jobs:
   lint: # Job pertama untuk linting
