@@ -19,7 +19,8 @@ on:
       - sounds
 
 jobs:
-  lint: # Job pertama untuk linting
+  lint: 
+    name : Run ESLint
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -35,7 +36,7 @@ jobs:
 
       - name: Run npm audit
         run: npm audit --audit-level=high
-        continue-on-error: true # Ini akan melanjutkan meskipun ada kerentanan
+        continue-on-error: true
 
       - name: Make ESLint executable
         run: chmod +x ./node_modules/.bin/eslint
@@ -43,9 +44,10 @@ jobs:
       - name: Run ESLint
         run: npm run lint
 
-  test: # Job kedua untuk testing
+  test:
+    name : Run Unit Tests
     runs-on: ubuntu-latest
-    needs: lint # Ini memastikan job 'test' akan berjalan setelah 'lint' selesai dengan sukses
+    needs: lint
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
