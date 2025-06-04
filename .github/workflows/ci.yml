@@ -3,43 +3,57 @@ name: CI Pipeline
 on:
   push:
     branches:
-      - main 
+      - main
       - develop
       - feature/**
       - bugfix/**
   pull_request:
     branches:
-      - main 
+      - main
       - develop
 
 jobs:
-  lint-and-test:
+  lint: # Job pertama untuk linting
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '18'
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
 
-    - name: Install dependencies
-      run: npm install
-    
-    - name: Run npm audit
-      run: npm audit --audit-level=high
-      continue-on-error: true
+      - name: Install dependencies
+        run: npm install
 
-    - name: Make ESLint executable
-      run: chmod +x ./node_modules/.bin/eslint
-    
-    - name: Make Jest executable
-      run: chmod +x ./node_modules/.bin/jest
+      - name: Run npm audit
+        run: npm audit --audit-level=high
+        continue-on-error: true # Ini akan melanjutkan meskipun ada kerentanan
 
-    - name: Run ESLint
-      run: npm run lint 
+      - name: Make ESLint executable
+        run: chmod +x ./node_modules/.bin/eslint
 
-    - name: Run Tests
-      run: npm test 
+      - name: Run ESLint
+        run: npm run lint
+
+  test: # Job kedua untuk testing
+    runs-on: ubuntu-latest
+    needs: lint # Ini memastikan job 'test' akan berjalan setelah 'lint' selesai dengan sukses
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Make Jest executable
+        run: chmod +x ./node_modules/.bin/jest
+
+      - name: Run Tests
+        run: npm test
