@@ -90,6 +90,7 @@ export function findBestMove() {
 
     if (availableMoves.length === 0) return null;
 
+    // eslint-disable-next-line security/detect-object-injection
     for (const move of availableMoves) {
         const temp = currentCells.map(c => c.textContent);
         temp[move] = 'O'; // eslint-disable-next-line security/detect-object-injection
