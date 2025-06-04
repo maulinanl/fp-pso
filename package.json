@@ -9,15 +9,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/qoyyimil/fp-pso.git"
+    "url": "git+https://github.com/maulinanl/fp-pso.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/qoyyimil/fp-pso/issues"
+    "url": "https://github.com/maulinanl/fp-pso/issues"
   },
-  "homepage": "https://github.com/qoyyimil/fp-pso#readme",
+  "homepage": "https://github.com/maulinanl/fp-pso#readme",
   "devDependencies": {
     "@babel/core": "^7.27.3",
     "@babel/preset-env": "^7.27.2",
