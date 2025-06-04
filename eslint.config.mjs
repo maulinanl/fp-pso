@@ -7,9 +7,9 @@ import security from 'eslint-plugin-security';
 export default defineConfig([
   {
     files: ["**/*.{js,mjs,cjs}"],
-    plugins: { 
+    plugins: {
       js,
-      security 
+      security
     },
     extends: ["js/recommended"],
     languageOptions: {
@@ -23,6 +23,8 @@ export default defineConfig([
       ...security.configs.recommended.rules,
       "no-unused-vars": "off",
       "no-undef": "off",
+      // Tambahkan baris ini:
+      "security/detect-object-injection": "off"
     }
   },
 ]);

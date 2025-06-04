@@ -90,16 +90,15 @@ export function findBestMove() {
 
     if (availableMoves.length === 0) return null;
 
-    // eslint-disable-next-line security/detect-object-injection
     for (const move of availableMoves) {
         const temp = currentCells.map(c => c.textContent);
-        temp[move] = 'O'; // eslint-disable-next-line security/detect-object-injection
+        temp[move] = 'O';
         if (checkWinnerForMinimax(temp, 'O')) return currentCells[move];
     }
 
     for (const move of availableMoves) {
         const temp = currentCells.map(c => c.textContent);
-        temp[move] = 'X'; // eslint-disable-next-line security/detect-object-injection
+        temp[move] = 'X';
         if (checkWinnerForMinimax(temp, 'X')) return currentCells[move];
     }
 
@@ -144,7 +143,7 @@ scoreOElement?.addEventListener('animationend', () => {
 export function handleCellClick(event) {
     const clickedCell = event.target;
     if (clickedCell.textContent === "" && !gameState.gameOver) {
-        clickedCell.textContent = gameState.currentPlayer; // eslint-disable-next-line security/detect-object-injection
+        clickedCell.textContent = gameState.currentPlayer;
         moveSound.currentTime = 0;
         moveSound.play();
 
