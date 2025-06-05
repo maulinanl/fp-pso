@@ -23,7 +23,6 @@ export default defineConfig([
       ...security.configs.recommended.rules,
       "no-unused-vars": "off",
       "no-undef": "off",
-      // Tambahkan baris ini:
       "security/detect-object-injection": "off"
     }
   },
