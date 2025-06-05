@@ -364,6 +364,17 @@ body.dark-mode .cell {
 body.dark-mode .cell:hover {
     background-color: #3a3f44 !important;
 }
+.cell.winner, .cell.winner:hover{
+    background-color: #8bc34a !important;
+    color: #fff !important;
+    transform: scale(1.08) !important;
+    box-shadow: 0 0 12px #8bc34a80;
+}
+body.dark-mode .cell.winner, body.dark-mode .cell.winner:hover {
+    background-color: #4caf50 !important;
+    transform: scale(1.08) !important;
+    box-shadow: 0 0 12px #8bc34a80;
+}
 body.dark-mode #game-board {
     background-color: #23272a;
 }

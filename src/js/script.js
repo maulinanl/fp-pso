@@ -66,9 +66,9 @@ export function checkWinner() {
 }
 
 function highlightWinner(cellA, cellB, cellC) {
-    cellA.style.backgroundColor = "#8bc34a";
-    cellB.style.backgroundColor = "#8bc34a";
-    cellC.style.backgroundColor = "#8bc34a";
+    cellA.classList.add('winner');
+    cellB.classList.add('winner');
+    cellC.classList.add('winner');
 }
 
 export function checkDraw() {
@@ -223,11 +223,10 @@ export function restartGame() {
     gameOverMessage.style.display = "none";
 
     const cells = getCells();
-    const isDark = document.body.classList.contains('darkmode');
+    const isDark = document.body.classList.contains('dark-mode');
     cells.forEach(cell => {
         cell.textContent = "";
-        cell.style.backgroundColor = isDark ? "#2c2f34" : "#f9f9f9";
-        cell.style.color = isDark ? "#f0f4f8" : "#333";
+        cell.classList.remove('winner');
         cell.style.transform = "scale(1)";
         cell.style.transition = "";
     });
@@ -237,7 +236,7 @@ export function resetScores() {
     scoreX = 0;
     scoreO = 0;
     updateScoreDisplay();
-    exports.restartGame();
+    restartGame();
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -253,15 +252,15 @@ document.addEventListener("DOMContentLoaded", () => {
     if (themeToggle) {
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme === 'dark') {
-            document.body.classList.add('darkmode');
+            document.body.classList.add('dark-mode');
             themeToggle.checked = true;
         }
         themeToggle.addEventListener('change', () => {
             if (themeToggle.checked) {
-                document.body.classList.add('darkmode');
+                document.body.classList.add('dark-mode');
                 localStorage.setItem('theme', 'dark');
             } else {
-                document.body.classList.remove('darkmode');
+                document.body.classList.remove('dark-mode');
                 localStorage.setItem('theme', 'light');
             }
             restartGame(); // perbarui gaya cell
