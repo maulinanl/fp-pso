@@ -483,7 +483,6 @@ describe('Game UI and State Management Tests', () => {
     expect(scriptModule.scoreO).toBe(0);
     expect(mockScoreXElement.textContent).toBe('0');
     expect(mockScoreOElement.textContent).toBe('0');
-    // Tidak perlu expect(scriptModule.restartGame).toHaveBeenCalled();
     });
 
     test('theme toggle should add darkmode class and set localStorage', () => {

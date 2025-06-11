@@ -300,36 +300,36 @@ body {
     right: 30px;
     z-index: 10;
 }
-.switch {
-    position: relative;
-    display: inline-block;
-    width: 48px;
-    height: 24px;
-}
 .switch input {
     opacity: 0;
     width: 0;
     height: 0;
 }
-.slider {
+.switch .slider{
     position: relative;
-    cursor: pointer;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background-color: #ccc;
+    display: inline-block;
+    width: 48px;
+    height: 24px;
+    border: 2px solid #f0f0f0; /*ini ntar diubah sesuain */
+    box-sizing: border-box;
     border-radius: 24px;
+    background-color: #ccc; /*ini ntar diubah sesuain */
     transition: .4s;
 }
 .slider:before {
     position: absolute;
     content: "";
-    height: 18px; width: 18px;
-    left: 3px; bottom: 3px;
+    height: 18px;
+    width: 18px;
+    left: 2px;
+    top: 1px;
     background-color: white;
     border-radius: 50%;
     transition: .4s;
 }
 input:checked + .slider {
     background-color: #2196F3;
+    border: 2px solid #1565c0; /*ini ntar diubah sesuain */
 }
 input:checked + .slider:before {
     transform: translateX(24px);
