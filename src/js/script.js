@@ -236,7 +236,7 @@ export function resetScores() {
     scoreX = 0;
     scoreO = 0;
     updateScoreDisplay();
-    restartGame();
+    exports.restartGame();
 }
 
 document.addEventListener("DOMContentLoaded", () => {
