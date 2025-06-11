@@ -1,6 +1,6 @@
-# 🕹️ Tini Tactics
+# 🕹️ Tiny Tactics
 
-Tini Tactics is a strategic 3x3 web-based board game inspired by classic tic-tac-toe. Built with modern JavaScript, HTML, and CSS, it offers both competitive and casual gameplay through two main modes: play against a friend or challenge a smart computer opponent.
+Tiny Tactics is a strategic 3x3 web-based board game inspired by classic tic-tac-toe. Built with modern JavaScript, HTML, and CSS, it offers both competitive and casual gameplay through two main modes: play against a friend or challenge a smart computer opponent.
 
 ### 👨‍💻 Developed By
 
