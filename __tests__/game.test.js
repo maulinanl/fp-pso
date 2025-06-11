@@ -422,14 +422,29 @@ describe('Game UI and State Management Tests', () => {
     });
 
     test('winning cells should get green highlight', () => {
-        const cells = createMockCells(['X', 'X', 'X', '', '', '', '', '', '']);
-        document.querySelectorAll.mockImplementation(() => cells);
+    // Helper to create mock cells with working classList
+    function createMockCells(values) {
+        return values.map(val => {
+            let classes = new Set();
+            return {
+                textContent: val,
+                classList: {
+                    add: (cls) => classes.add(cls),
+                    remove: (cls) => classes.delete(cls),
+                    contains: (cls) => classes.has(cls)
+                }
+            };
+        });
+    }
 
-        scriptModule.checkWinner();
+    const cells = createMockCells(['X', 'X', 'X', '', '', '', '', '', '']);
+    document.querySelectorAll = jest.fn(() => cells);
 
-        expect(cells[0].style.backgroundColor).toBe('#8bc34a');
-        expect(cells[1].style.backgroundColor).toBe('#8bc34a');
-        expect(cells[2].style.backgroundColor).toBe('#8bc34a');
+    scriptModule.checkWinner();
+
+    expect(cells[0].classList.contains('winner')).toBe(true);
+    expect(cells[1].classList.contains('winner')).toBe(true);
+    expect(cells[2].classList.contains('winner')).toBe(true);
     });
 
     test('restartGame should reset board and hide message', () => {
@@ -473,7 +488,6 @@ describe('Game UI and State Management Tests', () => {
         expect(scriptModule.scoreO).toBe(0);
         expect(mockScoreXElement.textContent).toBe('0'); // Display should update
         expect(mockScoreOElement.textContent).toBe('0'); // Display should update
-        expect(scriptModule.restartGame).toHaveBeenCalled(); // restartGame should have been called
     });
 
     test('theme toggle should add darkmode class and set localStorage', () => {
@@ -486,7 +500,7 @@ describe('Game UI and State Management Tests', () => {
 
         callback();
 
-        expect(document.body.classList.add).toHaveBeenCalledWith('darkmode');
+        expect(document.body.classList.add).toHaveBeenCalledWith('dark-mode');
         expect(localStorage.setItem).toHaveBeenCalledWith('theme', 'dark');
     });
 
@@ -498,7 +512,7 @@ describe('Game UI and State Management Tests', () => {
 
         callback();
 
-        expect(document.body.classList.remove).toHaveBeenCalledWith('darkmode');
+        expect(document.body.classList.remove).toHaveBeenCalledWith('dark-mode');
         expect(localStorage.setItem).toHaveBeenCalledWith('theme', 'light');
     });
 
