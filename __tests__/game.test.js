@@ -39,11 +39,10 @@ beforeAll(() => {
     // Mock audio elements globally for all tests
     window.HTMLMediaElement.prototype.play = jest.fn();
     window.HTMLMediaElement.prototype.load = jest.fn();
-    jest.useFakeTimers(); // Enable Jest's fake timers for setTimeout/setInterval
 });
 
 beforeEach(() => {
-    // Reset modules to ensure a fresh import for each test
+    jest.useFakeTimers();
     jest.resetModules();
 
     // ClassList override agar bisa di-spy
@@ -472,22 +471,19 @@ describe('Game UI and State Management Tests', () => {
         expect(mockRestartButton.style.display).toBe('none'); // Restart button hidden
     });
 
-    test('resetScores should set scores to 0 and restart game', () => {
-        // Set some initial scores
-        scriptModule.scoreX = 5;
-        scriptModule.scoreO = 3;
-        mockScoreXElement.textContent = '5'; // Update mock DOM elements
-        mockScoreOElement.textContent = '3';
+    test('resetScores should set scores to 0 and update display', () => {
+    scriptModule.scoreX = 5;
+    scriptModule.scoreO = 3;
+    mockScoreXElement.textContent = '5';
+    mockScoreOElement.textContent = '3';
 
-        // Spy on restartGame to confirm it's called
-        jest.spyOn(scriptModule, 'restartGame');
+    scriptModule.resetScores();
 
-        scriptModule.resetScores();
-
-        expect(scriptModule.scoreX).toBe(0);
-        expect(scriptModule.scoreO).toBe(0);
-        expect(mockScoreXElement.textContent).toBe('0'); // Display should update
-        expect(mockScoreOElement.textContent).toBe('0'); // Display should update
+    expect(scriptModule.scoreX).toBe(0);
+    expect(scriptModule.scoreO).toBe(0);
+    expect(mockScoreXElement.textContent).toBe('0');
+    expect(mockScoreOElement.textContent).toBe('0');
+    // Tidak perlu expect(scriptModule.restartGame).toHaveBeenCalled();
     });
 
     test('theme toggle should add darkmode class and set localStorage', () => {
