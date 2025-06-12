@@ -118,7 +118,7 @@ The CI pipeline is configured to automatically trigger under specific conditions
    - **Name**: `Run ESLint `
    - **Runs On**: u`buntu-latest `
    - **Steps**:
-         - Checkout repository: Downloads the latest project source code from the GitHub repository.
+   -    Checkout repository: Downloads the latest project source code from the GitHub repository.
          - Set up Node.js: Configures the required Node.js environment (version '18').
          - Install dependencies: Installs all Node.js packages listed as development dependencies in `package.json`.
          - Run npm audit for vulnerabilities (DevSecOps SCA): Performs Software Composition Analysis (SCA) using `npm audit --audit-level high` to scan for known security vulnerabilities in third-party dependencies. `continue-on-error: true` allows the pipeline to proceed despite vulnerability warnings.
