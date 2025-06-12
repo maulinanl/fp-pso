@@ -21,22 +21,22 @@ Tiny Tactics is a strategic 3x3 web-based board game inspired by classic tic-tac
 
 ## 🛠️ Tools
 This DevOps project leverages various integrated modern tools to ensure automated and efficient development, testing, deployment, and monitoring processes.
--**Code Editor**: Visual Studio Code (VS Code) 
-   - Used as the primary code editor in the development of the "Tiny Tactics!" game source code. Its flexibility, rich extension ecosystem, and features supporting JavaScript development and Git integration make VS Code a highly efficient tool for the team.
--**Version Control**: GitHub 
-   - Serves as the central foundation for managing the project's source code. It enables storing all source code centrally and organized , tracking detailed changes including who made them and when , facilitating effective code review through pull requests , and allowing rollbacks to previous versions for stability.
--**CI/CD Automation**: GitHub Actions 
-   - The backbone of the Continuous Integration/Continuous Deployment (CI/CD) pipeline automation in the "Tiny Tactics!" project. It automates the development workflow efficiently. The CI/CD pipeline is configured to automatically trigger on every push to the main branch and specific feature branches (like Feat--**, fitur--**, Security, logo, and sounds), as well as on every pull request targeting these branches. The CD pipeline specifically triggers after the "CI Pipeline" workflow successfully completes on the main branch.
--**Code Quality & Security**: ESLint 
-   - A tool that helps check and fix JavaScript code to be cleaner and error-free, ensuring the code follows certain rules and preventing bugs from the start. It analyzes code statically to identify potential errors, bugs, and style violations, helping developers write cleaner, structured, and problem-free code. ESLint is integrated directly into the CI pipeline, causing the build to fail if violations are found. Custom configurations are defined in eslint.config.mjs, including js/recommended and eslint-plugin-security presets.
--**Unit Testing**: Jest 
-   - A popular, comprehensive JavaScript testing framework designed to work optimally with modern JavaScript applications. Jest provides fast unit testing with an intuitive API, including mocking, snapshot testing, and code coverage reporting. It is used for comprehensive unit tests on various aspects of the game, such as game logic (winning conditions, draw detection) , AI logic (best move selection) , and UI interactions (cell placement, player switching, score updates). Jest is automatically run in the CI pipeline after linting is successful.
--**Dependency Security Scan**: npm audit 
-   - Integrated into the CI pipeline to ensure project dependency security. The command npm audit --audit-level high is run to scan for high-severity security vulnerabilities. The configuration continue-on-error: true allows the CI pipeline to continue even if vulnerabilities are found, providing flexibility for review and remediation.
--**Deployment Platform**: Vercel 
-   - A cloud-based deployment platform chosen for hosting the "Tiny Tactics!" front-end application. Vercel is designed to simplify and accelerate web project deployment, especially for JavaScript frameworks. It integrates closely with GitHub Actions, enabling automatic deployment whenever the CI pipeline succeeds on the main branch. The application is deployed to `https://fp-pso-umber.vercel.app/`.
--**Monitoring & Analytics**: Vercel Analytics & Speed Insights 
-   - Integrated into the project to gain insights into application performance and usage. Scripts for Vercel Analytics (/_vercel/insights/script.js) and Speed Insights `/_vercel/speed-insights/script.js` are added with defer to index.html. This integration is important for monitoring performance metrics and user behavior post-deployment, assisting with future iterations and optimizations.
+- **Code Editor**: Visual Studio Code (VS Code)
+  Used as the primary code editor in the development of the "Tiny Tactics!" game source code. Its flexibility, rich extension ecosystem, and features supporting JavaScript development and Git integration make VS Code a highly efficient tool for the team.
+- **Version Control**: GitHub
+  Serves as the central foundation for managing the project's source code. It enables storing all source code centrally and organized , tracking detailed changes including who made them and when , facilitating effective code review through pull requests , and allowing rollbacks to previous versions for stability.
+- **CI/CD Automation**: GitHub Actions
+  The backbone of the Continuous Integration/Continuous Deployment (CI/CD) pipeline automation in the "Tiny Tactics!" project. It automates the development workflow efficiently. The CI/CD pipeline is configured to automatically trigger on every push to the main branch and specific feature branches (like Feat--**, fitur--**, Security, logo, and sounds), as well as on every pull request targeting these branches. The CD pipeline specifically triggers after the "CI Pipeline" workflow successfully completes on the main branch.
+- **Code Quality & Security**: ESLint
+  A tool that helps check and fix JavaScript code to be cleaner and error-free, ensuring the code follows certain rules and preventing bugs from the start. It analyzes code statically to identify potential errors, bugs, and style violations, helping developers write cleaner, structured, and problem-free code. ESLint is integrated directly into the CI pipeline, causing the build to fail if violations are found. Custom configurations are defined in eslint.config.mjs, including js/recommended and eslint-plugin-security presets.
+- **Unit Testing**: Jest
+  A popular, comprehensive JavaScript testing framework designed to work optimally with modern JavaScript applications. Jest provides fast unit testing with an intuitive API, including mocking, snapshot testing, and code coverage reporting. It is used for comprehensive unit tests on various aspects of the game, such as game logic (winning conditions, draw detection) , AI logic (best move selection) , and UI interactions (cell placement, player switching, score updates). Jest is automatically run in the CI pipeline after linting is successful.
+- **Dependency Security Scan**: npm audit
+  Integrated into the CI pipeline to ensure project dependency security. The command npm audit --audit-level high is run to scan for high-severity security vulnerabilities. The configuration continue-on-error: true allows the CI pipeline to continue even if vulnerabilities are found, providing flexibility for review and remediation.
+- **Deployment Platform**: Vercel
+  A cloud-based deployment platform chosen for hosting the "Tiny Tactics!" front-end application. Vercel is designed to simplify and accelerate web project deployment, especially for JavaScript frameworks. It integrates closely with GitHub Actions, enabling automatic deployment whenever the CI pipeline succeeds on the main branch. The application is deployed to `https://fp-pso-umber.vercel.app/`.
+- **Monitoring & Analytics**: Vercel Analytics & Speed Insights
+  Integrated into the project to gain insights into application performance and usage. Scripts for Vercel Analytics (/_vercel/insights/script.js) and Speed Insights `/_vercel/speed-insights/script.js` are added with defer to index.html. This integration is important for monitoring performance metrics and user behavior post-deployment, assisting with future iterations and optimizations.
 
 ## 🚀 How to Run
 To run the Tiny Tactics game, follow these steps:
