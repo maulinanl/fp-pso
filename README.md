@@ -1,6 +1,7 @@
 # 🕹️ Tiny Tactics
 
 Tiny Tactics is a strategic 3x3 web-based board game inspired by classic tic-tac-toe. Built with modern JavaScript, HTML, and CSS, it offers both competitive and casual gameplay through two main modes: play against a friend or challenge a smart computer opponent.
+
 ![image](https://github.com/user-attachments/assets/e4b11811-0f60-4aee-a330-8cb7b3f6bbae)
 
 ## ✨ Features
@@ -25,13 +26,6 @@ Tiny Tactics is a strategic 3x3 web-based board game inspired by classic tic-tac
 
 - **Restart & Reset Score Buttons**  
   Easily restart the game or reset scores at any time.
-
-### 👨‍💻 Developed By
-
-- Putri Salsabilla Insani
-- Qoyyimil Jamilah
-- Maulina Nur Laila
-- Awwaliyah Aliyah
 
 ## 🛠️ Tools
 This DevOps project leverages various integrated modern tools to ensure automated and efficient development, testing, deployment, and monitoring processes.
@@ -203,13 +197,20 @@ After all these stages are successfully executed, the Tic-Tac-Toe game applicati
 10. **Get User ID**: Click the "Profile" icon in the top-right corner, then "Account Settings", find "User ID", copy, and save it.
 11. **Create API Token**: Still in "Account Settings", click the "Tokens" menu. In the "Create Token" section, fill in "Token Name", choose "Scope", and "Expiration", then click "Create".
 12. **Save Token**: Copy and save the created token. This token will be used as `secrets.VERCEL_TOKEN` in your GitHub Actions workflow.
-      
+
 ## 💡 Additional Notes
 
 - All pipeline, configuration, and best-practices are included in this repository.  
 - This project is suitable as a reference for learning modern JavaScript web app DevOps basics.
 
 ---
+
+### 👨‍💻 Developed By
+
+- Putri Salsabilla Insani
+- Qoyyimil Jamilah
+- Maulina Nur Laila
+- Awwaliyah Aliyah
 
 Thank you for using Tiny Tactics!  
 Feedback, contributions, and issues are always welcome.
