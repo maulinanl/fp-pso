@@ -4,13 +4,27 @@ Tiny Tactics is a strategic 3x3 web-based board game inspired by classic tic-tac
 ![image](https://github.com/user-attachments/assets/e4b11811-0f60-4aee-a330-8cb7b3f6bbae)
 
 ## ✨ Features
--**Dual Game Modes**: Users can choose to play against a friend (Player vs. Player) or against a computer with a simple artificial intelligence that can automatically determine the best move.
--**Score System**: Player scores are automatically recorded during the game session. Scores can be reset with a special button. However, if only restarting the game mid-session, the score is retained.
--**Winning Highlights & Animations**: When a win occurs, the winning cells will be highlighted and animated to provide more engaging visual feedback.
--**Restart Game Button**: Players can easily restart the game at any time.
--**Dark Mode**: Users can change the theme appearance between light and dark according to their preference.
--**Interactive Sound Effects**: Sound effects are added for every important action such as winning, losing, and drawing.
--**Interactive Background Display**: The game background is designed with interactive and illustrative visual elements to create a fun and immersive playing atmosphere.
+- **2 Game Modes**  
+  - Player vs Player (local two-player)
+  - Player vs Computer (basic AI)
+
+- **Automatic Scoring System**  
+  Both players' scores are tracked throughout the session and can be reset at any time.
+
+- **Winning Highlights & Animation**  
+  Winning cells are highlighted and animated for clear visual feedback.
+
+- **Dark/Light Theme**  
+  Users can toggle between dark and light mode as preferred.
+
+- **Interactive Sound Effects**  
+  Audio feedback for key actions (win, lose, draw).
+
+- **Dynamic Background**  
+  Engaging, interactive visual background for an immersive experience.
+
+- **Restart & Reset Score Buttons**  
+  Easily restart the game or reset scores at any time.
 
 ### 👨‍💻 Developed By
 
@@ -37,6 +51,28 @@ This DevOps project leverages various integrated modern tools to ensure automate
   A cloud-based deployment platform chosen for hosting the "Tiny Tactics!" front-end application. Vercel is designed to simplify and accelerate web project deployment, especially for JavaScript frameworks. It integrates closely with GitHub Actions, enabling automatic deployment whenever the CI pipeline succeeds on the main branch. The application is deployed to `https://fp-pso-umber.vercel.app/`.
 - **Monitoring & Analytics**: Vercel Analytics & Speed Insights
   Integrated into the project to gain insights into application performance and usage. Scripts for Vercel Analytics (/_vercel/insights/script.js) and Speed Insights `/_vercel/speed-insights/script.js` are added with defer to index.html. This integration is important for monitoring performance metrics and user behavior post-deployment, assisting with future iterations and optimizations.
+
+## 🧩 Project Structure
+
+```
+fp-pso/
+├── index.html             # Main entry point
+├── src/
+│   ├── js/
+│   │   └── script.js      # Main game logic
+│   ├── css/
+│   │   └── style.css      # Main styling
+│   └── images/            # Logos and images
+├── __tests__/
+│   └── game.test.js       # Game logic unit tests
+├── .github/workflows/
+│   ├── ci.yml             # CI pipeline (lint, test, audit)
+│   └── cd.yml             # CD pipeline (deploy to Vercel)
+├── package.json           # npm configuration & dependencies
+├── eslint.config.mjs      # ESLint configuration
+├── babel.config.js        # Babel configuration
+├── jest.config.js         # Jest configuration
+```
 
 ## 🚀 How to Run
 To run the Tiny Tactics game, follow these steps:
@@ -168,3 +204,12 @@ After all these stages are successfully executed, the Tic-Tac-Toe game applicati
 11. **Create API Token**: Still in "Account Settings", click the "Tokens" menu. In the "Create Token" section, fill in "Token Name", choose "Scope", and "Expiration", then click "Create".
 12. **Save Token**: Copy and save the created token. This token will be used as `secrets.VERCEL_TOKEN` in your GitHub Actions workflow.
       
+## 💡 Additional Notes
+
+- All pipeline, configuration, and best-practices are included in this repository.  
+- This project is suitable as a reference for learning modern JavaScript web app DevOps basics.
+
+---
+
+Thank you for using Tiny Tactics!  
+Feedback, contributions, and issues are always welcome.
