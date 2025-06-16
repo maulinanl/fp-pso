@@ -213,8 +213,6 @@ The project uses GitHub Actions for Continuous Integration and Deployment.
 8. **Copy User ID:** From "Account Settings."
 9. **Create API Token:** In "Tokens," name and create a new token, then save it. This will be used as `secrets.VERCEL_TOKEN` in your GitHub Actions workflows.
 
----
-
 When all steps are complete, every successful push to `main` will automatically update your live application on Vercel!
 
 ## 💡 Additional Notes
