@@ -2,10 +2,13 @@
 
 Tiny Tactics is a strategic 3x3 web-based board game inspired by classic tic-tac-toe. Built with modern JavaScript, HTML, and CSS, it offers both competitive and casual gameplay through two main modes: play against a friend or challenge a smart computer opponent.
 
-![image](https://github.com/user-attachments/assets/e4b11811-0f60-4aee-a330-8cb7b3f6bbae)
+![Tiny Tactics Screenshot](https://github.com/user-attachments/assets/e4b11811-0f60-4aee-a330-8cb7b3f6bbae)
+
+---
 
 ## ✨ Features
-- **2 Game Modes**  
+
+- **2 Game Modes**
   - Player vs Player (local two-player)
   - Player vs Computer (basic AI)
 
@@ -27,68 +30,73 @@ Tiny Tactics is a strategic 3x3 web-based board game inspired by classic tic-tac
 - **Restart & Reset Score Buttons**  
   Easily restart the game or reset scores at any time.
 
+---
+
 ## 🛠️ Tools
 
 This DevOps project adopts a suite of modern tools to automate and streamline development, testing, deployment, and monitoring:
 
 - **Code Editor: Visual Studio Code (VS Code)**  
-  Utilized as the primary editor for its flexibility, rich extension ecosystem, and features that support JavaScript development and Git integration. VS Code accelerates development and boosts productivity.
+  Utilized as the primary editor for its flexibility, rich extension ecosystem, and features that support JavaScript development and Git integration.
 
 - **Version Control: GitHub**  
-  Functions as the central hub for source code management. It allows for organized storage, detailed change tracking, code reviews via pull requests, and safe rollbacks to previous versions when needed.
+  Central hub for source code management, detailed tracking, code reviews via pull requests, and safe rollbacks to previous versions.
 
 - **CI/CD Automation: GitHub Actions**  
-  Powers the Continuous Integration/Continuous Deployment (CI/CD) pipeline. The workflow is triggered automatically on every push or pull request to the main and specific feature branches (`Feat--**`, `fitur--**`, `Security`, `logo`, `sounds`). The deployment (CD) pipeline runs after successful CI on the main branch.
+  Powers the Continuous Integration/Continuous Deployment (CI/CD) pipeline. The workflow is triggered automatically on every push or pull request to the `main` and feature branches (`Feat--**`, `fitur--**`, `Security`, `logo`, `sounds`). The deployment (CD) pipeline runs after successful CI on the main branch.
 
 - **Code Quality & Security: ESLint**  
-  Ensures JavaScript code quality and security through static analysis. ESLint checks for errors, enforces style rules, and catches potential bugs. It's tightly integrated with the CI pipeline—builds fail if violations are found. Custom rules are defined in `eslint.config.mjs`, including `js/recommended` and `eslint-plugin-security` presets.
+  Ensures JavaScript code quality and security through static analysis. ESLint is tightly integrated with the CI pipeline—builds fail if violations are found. Custom rules are defined in `eslint.config.mjs`.
 
 - **Unit Testing: Jest**  
-  Provides fast and robust unit testing for JavaScript. Jest supports mocking, snapshot tests, and code coverage. Tests cover game logic (winning, draw detection), AI (move selection), and UI (cell placement, switching players, score updates). Jest runs automatically in CI after linting passes.
+  Provides fast and robust unit testing. Covers game logic, AI, and UI behaviors. Jest runs automatically in CI after linting passes.
 
 - **Dependency Security Scan: npm audit**  
-  Secures project dependencies by scanning for vulnerabilities with `npm audit --audit-level high`. Integrated into CI; the pipeline continues even if vulnerabilities are found (via `continue-on-error: true`) for flexible remediation.
+  Scans for vulnerabilities with `npm audit --audit-level high`. Integrated into CI (pipeline continues even if vulnerabilities are found for flexible remediation).
 
 - **Deployment Platform: Vercel**  
-  Hosts the front-end application, streamlining deployments for JavaScript projects. Integrated with GitHub Actions, it enables automatic deployments whenever CI passes on the main branch. The live app is available at [`https://fp-pso-umber.vercel.app/`](https://fp-pso-umber.vercel.app/).
+  Hosts the front-end application, streamlining deployments for JavaScript projects. Integrated with GitHub Actions for automatic deployments on successful CI runs.  
+  **Live app:** [https://fp-pso-umber.vercel.app/](https://fp-pso-umber.vercel.app/)
 
 - **Monitoring & Analytics: Vercel Analytics & Speed Insights**  
-  Embedded in the project for real-time performance and usage tracking. Scripts for Vercel Analytics (`/_vercel/insights/script.js`) and Speed Insights (`/_vercel/speed-insights/script.js`) are included in `index.html`. These tools provide valuable metrics for ongoing optimization and user experience improvements.
+  Embedded scripts in `index.html` provide real-time performance and usage metrics.
+
+---
 
 ## 🧩 Project Structure
 
 ```
 fp-pso/
-├── index.html             # Main entry point
+├── index.html               # Main entry point
 ├── src/
 │   ├── js/
-│   │   └── script.js      # Main game logic
+│   │   └── script.js        # Main game logic
 │   ├── css/
-│   │   └── style.css      # Main styling
-│   └── images/            # Logos and images
+│   │   └── style.css        # Main styling
+│   └── images/              # Logos and images
 ├── __tests__/
-│   └── game.test.js       # Game logic unit tests
+│   └── game.test.js         # Game logic unit tests
 ├── .github/workflows/
-│   ├── ci.yml             # CI pipeline (lint, test, audit)
-│   └── cd.yml             # CD pipeline (deploy to Vercel)
-├── package.json           # npm configuration & dependencies
-├── eslint.config.mjs      # ESLint configuration
-├── babel.config.js        # Babel configuration
-├── jest.config.js         # Jest configuration
+│   ├── ci.yml               # CI pipeline (lint, test, audit)
+│   └── cd.yml               # CD pipeline (deploy to Vercel)
+├── package.json             # npm configuration & dependencies
+├── eslint.config.mjs        # ESLint configuration
+├── babel.config.js          # Babel configuration
+├── jest.config.js           # Jest configuration
 ```
-
-## 🚀 How to Run
-
-Follow these steps to set up and run the Tiny Tactics game on your local machine or deploy it to production.
 
 ---
 
+## 🚀 How to Run
+
+Follow these steps to set up and run the Tiny Tactics game locally or deploy it to production.
+
 ### System Requirements
 
-- **Node.js** (version 18 or higher) – JavaScript runtime
-- **npm** (Node Package Manager) – for installing dependencies (usually comes with Node.js)
-- **Git** – for cloning the repository
-- **Web Browser** – Chrome, Firefox, Edge, etc.
+- **Node.js** (v18+)
+- **npm** (Node Package Manager)
+- **Git**
+- **Web Browser** (Chrome, Firefox, Edge, etc.)
 - **Visual Studio Code (VS Code)** (optional, recommended)
 - **VS Code Live Server Extension** (optional, recommended for local development)
 
@@ -120,7 +128,7 @@ Follow these steps to set up and run the Tiny Tactics game on your local machine
 
 1. Open the project in Visual Studio Code.
 2. Open the `index.html` file.
-3. Install the "Live Server" extension by Ritwick Dey from the VS Code Extensions Marketplace (if not yet installed).
+3. Install the **Live Server** extension (if not already installed).
 4. Click the "Go Live" button in the VS Code status bar, or right-click `index.html` and select "Open with Live Server".
 5. The application will run on your `localhost`.
 
@@ -133,17 +141,14 @@ A live version is available at:
 
 ## 🚀 CI/CD Pipeline Setup
 
-The project uses GitHub Actions for Continuous Integration and Deployment.
+The project uses GitHub Actions for automated CI/CD.
 
 ### 1. GitHub Repository Setup
 
-- **Understand Existing Code:** Review the codebase to understand structure and functionality.
-- **Clone & Create New Repository:** Fork or clone, then create a new repository for development and pipeline enhancements.
-- **Initial Push:** Make necessary changes and push to the new repository.
-- **Phased Development:** Add features and CI/CD pipeline gradually.
-- **Code Push Workflow:**
-  - Push directly to `main` if the code is stable.
-  - For features/experiments, use separate branches and create Pull Requests (PRs) for review before merging to `main`.
+- Review and understand the codebase.
+- Fork or clone the repository for your own development.
+- Make changes and push to your remote repository.
+- Use feature branches and Pull Requests (PRs) for best practice.
 
 ---
 
@@ -156,14 +161,15 @@ The project uses GitHub Actions for Continuous Integration and Deployment.
   ```
 - **Install development dependencies:**
   ```sh
-  npm install eslint @eslint/js eslint-plugin-security globals @babel/core babel-jest jest jest-environment-jsdom @babel/preset-env --save-dev
+  npm install eslint @eslint/js eslint-plugin-security globals \
+    @babel/core babel-jest jest jest-environment-jsdom @babel/preset-env --save-dev
   ```
 - **Configure ESLint:** Edit `eslint.config.mjs`.
 - **Configure Babel:** Edit `babel.config.js`.
-- **Configure Jest:** Configure in `package.json` and `jest.config.js`.
+- **Configure Jest:** Edit `package.json` and `jest.config.js`.
 - **Write Unit Tests:** Place tests in `__tests__/game.test.js`.
-- **Write Game Logic:** Implement features in `script.js`.
-- **Run the app:** Use VS Code Live Server to view changes live.
+- **Write Game Logic:** Implement features in `src/js/script.js`.
+- **Run the app:** Use Live Server to view changes live.
 - **Run Tests:**  
   ```sh
   npm test
@@ -177,57 +183,58 @@ The project uses GitHub Actions for Continuous Integration and Deployment.
 
 ### 3. GitHub Actions Workflow
 
-- **Create Workflow Folder:** `.github/workflows/`
-- **Add Workflow Files:**  
+- **Workflows location:** `.github/workflows/`
   - `ci.yml` for Continuous Integration
   - `cd.yml` for Continuous Deployment
 
 #### CI Pipeline (ci.yml)
 
 - **Triggers:**
-  - On push to: `main`, `Feat--**`, `fitur--**`, `Security`, `logo`, `sounds`
-  - On pull request to: same branches as above
+  - On push or pull request to `main`, `Feat--**`, `fitur--**`, `Security`, `logo`, `sounds`
 - **Jobs:**
-  1. **Lint:** Run ESLint and security audits. Pipeline continues even if vulnerabilities are found for flexibility.
-  2. **Test:** Runs only if lint passes. Executes Jest unit tests (game logic, AI, UI, state management).
+  1. **Lint:** Runs ESLint and security audits. Pipeline continues on vulnerability warnings.
+  2. **Test:** Executes Jest unit tests (runs only if lint passes).
 
 #### CD Pipeline (cd.yml)
 
 - **Triggers:**
   - On push to `main`
-  - On successful completion of CI on `main`
+  - On successful CI completion for `main`
 - **Job:**  
-  - Deploys to Vercel, using environment variables and secrets for secure authentication.
+  - Deploys to Vercel, using environment variables and secrets for authentication.
 
 ---
 
 ### 4. Vercel Deployment Setup
 
-1. **Go to:** [https://vercel.com/](https://vercel.com/)
-2. **Sign Up/Login:** Create or login to your Vercel account.
-3. **Import Git Repository:** Use "Continue with GitHub" and select the `fp-pso` repository.
-4. **Configure New Project:** Name your project and accept defaults.
-5. **Deploy:** Click "Deploy."
-6. **Dashboard:** After deploy, click "Continue to Dashboard."
-7. **Copy Project ID:** Find and save it from the "Settings" tab.
-8. **Copy User ID:** From "Account Settings."
-9. **Create API Token:** In "Tokens," name and create a new token, then save it. This will be used as `secrets.VERCEL_TOKEN` in your GitHub Actions workflows.
+1. Go to [https://vercel.com/](https://vercel.com/)
+2. Sign up or log in.
+3. Import the `fp-pso` repository from GitHub.
+4. Configure the new project (default settings are fine).
+5. Click **Deploy**.
+6. After deployment, go to Dashboard.
+7. Copy your Project ID and User ID from the **Settings** and **Account Settings** tabs.
+8. Create an API token in the **Tokens** menu and save it as `secrets.VERCEL_TOKEN` in your GitHub Actions workflow.
 
-When all steps are complete, every successful push to `main` will automatically update your live application on Vercel!
-
-## 💡 Additional Notes
-
-- All pipeline, configuration, and best-practices are included in this repository.  
-- This project is suitable as a reference for learning modern JavaScript web app DevOps basics.
+Once configured, every push to `main` will automatically update your live application on Vercel!
 
 ---
 
-### 👨‍💻 Developed By
+## 💡 Additional Notes
+
+- This repository is a reference for DevOps best practices in modern JavaScript web apps.
+- All pipeline, configuration, and best-practice examples are included.
+
+---
+
+## 👨‍💻 Developed By
 
 - Putri Salsabilla Insani
 - Qoyyimil Jamilah
 - Maulina Nur Laila
 - Awwaliyah Aliyah
+
+---
 
 Thank you for using Tiny Tactics!  
 Feedback, contributions, and issues are always welcome.
