@@ -148,7 +148,7 @@ export function handleCellClick(event) {
         moveSound.play();
 
         if (checkWinner()) {
-            gameOverMessage.textContent = ${gameState.currentPlayer} wins!;
+            gameOverMessage.textContent = `${gameState.currentPlayer} wins!`;
             gameOverMessage.style.display = "block";
             gameState.gameOver = true;
             restartButton.style.display = "block";
