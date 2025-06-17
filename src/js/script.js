@@ -18,6 +18,11 @@ const vsComputerRadio = document.getElementById("vsComputer");
 const vsPlayerRadio = document.getElementById("vsPlayer");
 const resetButton = document.getElementById("reset-score-button");
 
+// Suara
+const winSound = new Audio("./src/sounds/win.mp3");
+const loseSound = new Audio("./src/sounds/lose.mp3");
+const drawSound = new Audio("./src/sounds/draw.mp3");
+
 // Buat dan inisialisasi papan
 function initializeBoard() {
     board.innerHTML = '';
@@ -148,12 +153,21 @@ export function handleCellClick(event) {
             if (gameState.currentPlayer === "X") {
                 const prev = scoreX;
                 scoreX++;
+                winSound.currentTime = 0;
+                winSound.play();
                 updateScoreDisplay(prev, scoreO);
             } else {
                 const prev = scoreO;
                 scoreO++;
 
-                gameMode === 'playerVsComputer'
+                if (gameMode === 'playerVsComputer') {
+                    loseSound.currentTime = 0;
+                    loseSound.play(); // O adalah komputer
+                } else {
+                    winSound.currentTime = 0;
+                    winSound.play(); // O adalah player, jadi play winSound juga
+                }
+
                 updateScoreDisplay(scoreX, prev);
             }
         } else if (checkDraw()) {
@@ -161,6 +175,7 @@ export function handleCellClick(event) {
             gameOverMessage.style.display = "block";
             gameState.gameOver = true;
             restartButton.style.display = "block";
+            drawSound.play();
         } else {
             gameState.currentPlayer = gameState.currentPlayer === "X" ? "O" : "X";
             if (gameMode === 'playerVsComputer' && gameState.currentPlayer === 'O' && !gameState.gameOver) {
@@ -177,6 +192,7 @@ export function computerMove() {
     if (bestMoveCell) {
         bestMoveCell.textContent = 'O';
 
+
         if (checkWinner()) {
             gameOverMessage.textContent = "O wins!";
             gameOverMessage.style.display = "block";
@@ -184,12 +200,14 @@ export function computerMove() {
             restartButton.style.display = "block";
             const prev = scoreO;
             scoreO++;
+            loseSound.play();
             updateScoreDisplay(scoreX, prev);
         } else if (checkDraw()) {
             gameOverMessage.textContent = "It's a draw!";
             gameOverMessage.style.display = "block";
             gameState.gameOver = true;
             restartButton.style.display = "block";
+            drawSound.play();
         } else {
             gameState.currentPlayer = "X";
         }
