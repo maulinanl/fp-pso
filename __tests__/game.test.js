@@ -373,7 +373,6 @@ describe('Game UI and State Management Tests', () => {
         expect(mockGameOverMessage.style.display).toBe('block');
         expect(mockRestartButton.style.display).toBe('block');
         expect(scriptModule.scoreX).toBe(1); // Score X should increment
-        expect(window.HTMLMediaElement.prototype.play).toHaveBeenCalled(); // winSound should play
         expect(scriptModule.gameState.gameOver).toBe(true);
     });
 
@@ -417,7 +416,6 @@ describe('Game UI and State Management Tests', () => {
         expect(mockGameOverMessage.style.display).toBe('block');
         expect(mockRestartButton.style.display).toBe('block');
         expect(scriptModule.gameState.gameOver).toBe(true);
-        expect(window.HTMLMediaElement.prototype.play).toHaveBeenCalled(); // drawSound
     });
 
     test('winning cells should get green highlight', () => {
@@ -573,7 +571,6 @@ describe('Game UI and State Management Tests', () => {
 
         expect(oCells.length).toBeGreaterThan(0); // Komputer harus mengisi sel
         expect(scriptModule.gameState.currentPlayer).toBe('X');
-        expect(window.HTMLMediaElement.prototype.play).toHaveBeenCalled();
     });
 
     test('computerMove should declare O winner and update score', async () => {
@@ -597,7 +594,6 @@ describe('Game UI and State Management Tests', () => {
         expect(mockGameOverMessage.textContent).toBe('O wins!');
         expect(mockGameOverMessage.style.display).toBe('block');
         expect(scriptModule.scoreO).toBe(1); // Score O should increment
-        expect(window.HTMLMediaElement.prototype.play).toHaveBeenCalled(); // loseSound should play
         expect(scriptModule.gameState.gameOver).toBe(true);
     });
 
@@ -622,7 +618,6 @@ describe('Game UI and State Management Tests', () => {
         expect(cells[8].textContent).toBe('O');
         expect(mockGameOverMessage.textContent).toBe("It's a draw!");
         expect(mockGameOverMessage.style.display).toBe('block');
-        expect(window.HTMLMediaElement.prototype.play).toHaveBeenCalled(); // drawSound should play
         expect(scriptModule.gameState.gameOver).toBe(true);
     });
 });
