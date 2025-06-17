@@ -19,6 +19,7 @@ const vsPlayerRadio = document.getElementById("vsPlayer");
 const resetButton = document.getElementById("reset-score-button");
 
 // Suara
+const moveSound = new Audio("./src/sounds/move.mp3");
 const winSound = new Audio("./src/sounds/win.mp3");
 const loseSound = new Audio("./src/sounds/lose.mp3");
 const drawSound = new Audio("./src/sounds/draw.mp3");
@@ -143,9 +144,11 @@ export function handleCellClick(event) {
     const clickedCell = event.target;
     if (clickedCell.textContent === "" && !gameState.gameOver) {
         clickedCell.textContent = gameState.currentPlayer;
+        moveSound.currentTime = 0;
+        moveSound.play();
 
         if (checkWinner()) {
-            gameOverMessage.textContent = `${gameState.currentPlayer} wins!`;
+            gameOverMessage.textContent = ${gameState.currentPlayer} wins!;
             gameOverMessage.style.display = "block";
             gameState.gameOver = true;
             restartButton.style.display = "block";
@@ -191,7 +194,7 @@ export function computerMove() {
 
     if (bestMoveCell) {
         bestMoveCell.textContent = 'O';
-
+        moveSound.play();
 
         if (checkWinner()) {
             gameOverMessage.textContent = "O wins!";
