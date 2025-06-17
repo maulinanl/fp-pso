@@ -421,29 +421,29 @@ describe('Game UI and State Management Tests', () => {
     });
 
     test('winning cells should get green highlight', () => {
-    // Helper to create mock cells with working classList
-    function createMockCells(values) {
-        return values.map(val => {
-            let classes = new Set();
-            return {
-                textContent: val,
-                classList: {
-                    add: (cls) => classes.add(cls),
-                    remove: (cls) => classes.delete(cls),
-                    contains: (cls) => classes.has(cls)
-                }
-            };
-        });
-    }
+        // Helper to create mock cells with working classList
+        function createMockCells(values) {
+            return values.map(val => {
+                let classes = new Set();
+                return {
+                    textContent: val,
+                    classList: {
+                        add: (cls) => classes.add(cls),
+                        remove: (cls) => classes.delete(cls),
+                        contains: (cls) => classes.has(cls)
+                    }
+                };
+            });
+        }
 
-    const cells = createMockCells(['X', 'X', 'X', '', '', '', '', '', '']);
-    document.querySelectorAll = jest.fn(() => cells);
+        const cells = createMockCells(['X', 'X', 'X', '', '', '', '', '', '']);
+        document.querySelectorAll = jest.fn(() => cells);
 
-    scriptModule.checkWinner();
+        scriptModule.checkWinner();
 
-    expect(cells[0].classList.contains('winner')).toBe(true);
-    expect(cells[1].classList.contains('winner')).toBe(true);
-    expect(cells[2].classList.contains('winner')).toBe(true);
+        expect(cells[0].classList.contains('winner')).toBe(true);
+        expect(cells[1].classList.contains('winner')).toBe(true);
+        expect(cells[2].classList.contains('winner')).toBe(true);
     });
 
     test('restartGame should reset board and hide message', () => {
@@ -472,18 +472,22 @@ describe('Game UI and State Management Tests', () => {
     });
 
     test('resetScores should set scores to 0 and update display', () => {
-    scriptModule.scoreX = 5;
-    scriptModule.scoreO = 3;
-    mockScoreXElement.textContent = '5';
-    mockScoreOElement.textContent = '3';
+        // Set some initial scores
+        scriptModule.scoreX = 5;
+        scriptModule.scoreO = 3;
+        mockScoreXElement.textContent = '5'; // Update mock DOM elements
+        mockScoreOElement.textContent = '3';
 
-    scriptModule.resetScores();
+        // Spy on restartGame to confirm it's called
+        jest.spyOn(scriptModule, 'restartGame');
 
-    expect(scriptModule.scoreX).toBe(0);
-    expect(scriptModule.scoreO).toBe(0);
-    expect(mockScoreXElement.textContent).toBe('0');
-    expect(mockScoreOElement.textContent).toBe('0');
-    // Tidak perlu expect(scriptModule.restartGame).toHaveBeenCalled();
+        scriptModule.resetScores();
+
+        expect(scriptModule.scoreX).toBe(0);
+        expect(scriptModule.scoreO).toBe(0);
+        expect(mockScoreXElement.textContent).toBe('0'); // Display should update
+        expect(mockScoreOElement.textContent).toBe('0'); // Display should update
+        expect(scriptModule.restartGame).toHaveBeenCalled(); // restartGame should have been called
     });
 
     test('theme toggle should add darkmode class and set localStorage', () => {
