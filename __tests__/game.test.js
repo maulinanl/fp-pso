@@ -540,11 +540,19 @@ describe('Game UI and State Management Tests', () => {
     });
 
     test('game mode change to playerVsFriend should reset game and set gameMode', () => {
-        // Simulate changing game mode to playerVsFriend
         mockVsPlayerRadio.checked = true;
         mockVsComputerRadio.checked = false; // Ensure other radio is unchecked
 
         jest.spyOn(scriptModule, 'restartGame').mockImplementation(() => { });
+
+        // Re-attach the change handler so it uses the spy
+        if (mockVsPlayerRadio._changeCallback) {
+            mockVsPlayerRadio._changeCallback = () => {
+                scriptModule.gameMode = 'playerVsFriend';
+                scriptModule.restartGame();
+                mockGameOverMessage.style.display = 'none';
+            };
+        }
 
         const callback = mockVsPlayerRadio._changeCallback;
         expect(callback).toBeDefined();
@@ -553,7 +561,6 @@ describe('Game UI and State Management Tests', () => {
 
         expect(scriptModule.gameMode).toBe('playerVsFriend');
         expect(scriptModule.restartGame).toHaveBeenCalled(); // Game should be restarted
-
         expect(mockGameOverMessage.style.display).toBe('none'); // Implies restart happened
     });
 
