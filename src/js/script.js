@@ -236,7 +236,7 @@ export function resetScores() {
     scoreX = 0;
     scoreO = 0;
     updateScoreDisplay();
-    exports.restartGame();
+    restartGame();
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -270,14 +270,14 @@ document.addEventListener("DOMContentLoaded", () => {
     if (vsComputerRadio) {
         vsComputerRadio.addEventListener('change', () => {
             gameMode = 'playerVsComputer';
-            exports.restartGame();
+            resetScores();
         });
     }
 
     if (vsPlayerRadio) {
         vsPlayerRadio.addEventListener('change', () => {
             gameMode = 'playerVsFriend';
-            exports.restartGame();
+            resetScores();
         });
     }
 
